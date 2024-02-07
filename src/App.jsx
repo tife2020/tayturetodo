@@ -9,11 +9,13 @@ const contDivStyle = {
   flexDirection: "column",
   gap: "32px",
   
+  
+
 };
 
 export default function App() {
   return (
-    <div>
+    <div className = "container">
       <Container>
         <div style={contDivStyle}>
           <Navbar />

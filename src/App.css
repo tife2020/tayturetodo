@@ -1,3 +1,4 @@
+
 *{
     margin: 0;
     padding: 0;
@@ -78,4 +79,65 @@ body{
     width: 100%;
     align-items: center;
     background: transparent;
+}
+.deskImg{
+    display:none;
+  }
+
+@media only screen and (min-width: 768px) {
+    .container{
+        width: 50%;
+        margin: 0 auto;  
+        overflow-x: hidden;
+    }
+
+    .containerBody{
+        min-width: 68px;
+        max-width: 50%;
+    }
+}
+
+
+  @media (min-width:992px){
+    & .deskImg{
+        display:block;
+        width: 450px;
+        margin-bottom: 1000px;
+        margin-left: 30px;
+  }
+  
+  .container{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .containerBody{
+    display: flex;
+    
+    min-width: 68px;
+    max-width: 100%;
+}
+  .loginForm{
+    display: flex;
+    flex-direction: column;
+    padding-top: 50px;
+    
+    
+}
+
+.loginForm p span{
+    text-decoration: underline;
+}
+
+.logInH1{
+    font-size: 32px;
+    margin-top: 50px;
+}
+
+
+.InputCont input{
+    border: none;
+}
+
 }
