@@ -14,6 +14,8 @@ const Header = styled.nav`
     }
 
   @media (min-width:768px){
+    padding-bottom: 32px;
+
     & .mobileLogo{
       display:none;
     }
