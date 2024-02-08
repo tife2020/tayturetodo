@@ -7,9 +7,6 @@ const contDivStyle = {
   display: "flex",
   flexDirection: "column",
   gap: "32px",
-  
-  
-
 };
 
 export default function Home() {
