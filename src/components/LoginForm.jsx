@@ -15,41 +15,51 @@ export default function LoginForm() {
   });
 
   const userLocal = {
-    username: '',
-    email: ''
-  }
+    username: "",
+    email: "",
+  };
 
   const navigate = useNavigate();
 
   function handleChange(e) {
     const { name, value } = e.target;
-    setInputValue( prevValue => {
+    setInputValue((prevValue) => {
       return {
-      ...prevValue,
-      [name]: value,
-    }
-  });
+        ...prevValue,
+        [name]: value,
+      };
+    });
   }
 
-  
+  function isValidEmail(email) {
+    const pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return pattern.test(email);
+  }
+
   function handleSubmit(e) {
     e.preventDefault();
-    setUser({
-      username: inputValue.username,
-      email: inputValue.email,
-    });
+    if (isValidEmail(inputValue.email)) {
+      setUser({
+        username: inputValue.username,
+        email: inputValue.email,
+      });
 
-    localStorage.clear();
+      localStorage.clear();
 
-    localStorage.setItem("username", user.username);
-    localStorage.setItem("email", user.email);
+      localStorage.setItem("username", user.username);
+      localStorage.setItem("email", user.email);
 
-    userLocal.username = localStorage.getItem("username");
-    userLocal.email = localStorage.getItem("email");
+      userLocal.username = localStorage.getItem("username");
+      userLocal.email = localStorage.getItem("email");
 
-    console.log(`${userLocal.username}\n${userLocal.email}`);
+      console.log(`${userLocal.username}\n${userLocal.email}`);
 
-    navigate('/taytureTodoApp')
+      navigate("/taytureTodoApp");
+    } else {
+    
+        alert('Enter a valid email')
+      
+    }
   }
 
   return (
@@ -74,9 +84,7 @@ export default function LoginForm() {
           onChange={handleChange}
           value={inputValue.email}
         />
-        <button type="submit" >
-          Log in
-        </button>
+        <button type="submit">Log in</button>
         <p>
           By continuing with Email, you agree to Todoist's
           <span>Terms of Service</span> and <span>Privacy and Policy</span>
