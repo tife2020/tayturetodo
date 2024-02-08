@@ -1,9 +1,10 @@
 
-export default function Input({label, ...props}){
+export default function Input({label, onChange, ...props}){
+    
     return(
         <div className="InputCont">
             <label><span>{label}</span></label>
-            <input {...props} />
+            <input onChange={onChange} {...props} />
         </div>
     )
 }

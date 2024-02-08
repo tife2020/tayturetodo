@@ -1,21 +1,89 @@
 import Input from "./Input";
 import todoistImg from "../assets/todoist-img.png";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function LoginForm() {
+  const [inputValue, setInputValue] = useState({
+    username: "",
+    email: "",
+  });
+
+  const [user, setUser] = useState({
+    username: "",
+    email: "",
+  });
+
+  const userLocal = {
+    username: "",
+    email: "",
+  };
+
+  const navigate = useNavigate();
+
+  function handleChange(e) {
+    const { name, value } = e.target;
+    setInputValue((prevValue) => {
+      return {
+        ...prevValue,
+        [name]: value,
+      };
+    });
+  }
+
+  function isValidEmail(email) {
+    const pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return pattern.test(email);
+  }
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    if (isValidEmail(inputValue.email)) {
+      setUser({
+        username: inputValue.username,
+        email: inputValue.email,
+      });
+
+      localStorage.clear();
+
+      localStorage.setItem("username", user.username);
+      localStorage.setItem("email", user.email);
+
+      userLocal.username = localStorage.getItem("username");
+      userLocal.email = localStorage.getItem("email");
+
+      console.log(`${userLocal.username}\n${userLocal.email}`);
+
+      navigate("/taytureTodoApp");
+    } else {
+    
+        alert('Enter a valid email')
+      
+    }
+  }
+
   return (
     <div className="containerBody">
-      <form className="loginForm">
-      <hr className="logInHr" />
+      <form className="loginForm" onSubmit={handleSubmit}>
+        <hr className="logInHr" />
         <Input
           label="Username"
+          name="username"
           type="text"
           placeholder="Enter your username..."
-        ></Input>
+          required
+          onChange={handleChange}
+          value={inputValue.username}
+        />
         <Input
           label="Email"
+          name="email"
           type="text"
           placeholder="Enter your email..."
-        ></Input>
+          required
+          onChange={handleChange}
+          value={inputValue.email}
+        />
         <button type="submit">Log in</button>
         <p>
           By continuing with Email, you agree to Todoist's
