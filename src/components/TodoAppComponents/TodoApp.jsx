@@ -1,18 +1,34 @@
-import NavbarTodo from "./NavbarTodo"
-import LeftSideApp from "./LeftSidePanel/LeftSidePanel"
-import { useState } from "react"
+import NavbarTodo from "./NavbarTodo";
+import LeftSideApp from "./LeftSidePanel/LeftSidePanel";
+import { useState, useEffect } from "react";
+import LoadingPage from "../LoadingPage.jsx";
 
-export default function TodoApp (){
-    const [leftMenuIsClicked, setLeftMenuIsClicked] = useState(true)
+export default function TodoApp() {
+  const [leftMenuIsClicked, setLeftMenuIsClicked] = useState(false);
+  const [isloading, setIsLoading] = useState(false);
 
-    function handleleftMenuIsClicked(){
-        setLeftMenuIsClicked(true);
-    }
+  useEffect(() => {
+    setIsLoading(true);
+    const t1 = setTimeout(() => {
+      setIsLoading(false);
+      clearTimeout(t1);
+    }, 4000);
+  }, []);
 
-    return(
+  function handleleftMenuIsClicked() {
+    setLeftMenuIsClicked(true);
+  }
+
+  return (
+    <>
+      {isloading ? (
+        <LoadingPage />
+      ) : (
         <>
-            <NavbarTodo/>
-            {leftMenuIsClicked?<LeftSideApp/>:null}
+          <NavbarTodo handleleftMenuIsClicked={handleleftMenuIsClicked} />
+          {leftMenuIsClicked ? <LeftSideApp /> : null}
         </>
-    )
+      )}
+    </>
+  );
 }
