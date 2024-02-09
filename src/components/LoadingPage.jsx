@@ -11,7 +11,6 @@ export default function LoadingPage() {
             color="#c3392c"
             size={25} 
             paddingTop={20}
-
             />
         </div>
     )

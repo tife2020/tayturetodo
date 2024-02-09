@@ -1,10 +1,12 @@
-
+import Profile from "./Profile"
 
 export default function LeftSideApp(){
     return(
         <>
             <div className="leftSideCont">
-                Hello
+                <div className="leftSideComponentCont">
+                    <Profile/>
+                </div>
             </div>
         </>
     )
