@@ -90,8 +90,8 @@ body{
     background: transparent;
 }
 
-.InputCont input{
-    border: 0;
+.InputCont input:focus {
+    outline: none;
 }
 
 .deskImg{
