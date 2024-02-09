@@ -12,7 +12,7 @@ export default function TodoApp() {
     const t1 = setTimeout(() => {
       setIsLoading(false);
       clearTimeout(t1);
-    }, 4000);
+    }, 3000);
   }, []);
 
   function handleleftMenuIsClicked() {
