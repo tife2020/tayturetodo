@@ -1,7 +1,8 @@
 import Input from "./Input";
 import todoistImg from "../assets/todoist-img.png";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import LoadingPage from "./LoadingPage.jsx";
 
 export default function LoginForm() {
   const [inputValue, setInputValue] = useState({
@@ -31,6 +32,16 @@ export default function LoginForm() {
     });
   }
 
+  const [isloading, setIsLoading] = useState(false);
+
+  useEffect(() => {
+    setIsLoading(true);
+    const t1 = setTimeout(() => {
+      setIsLoading(false);
+      clearTimeout(t1);
+    }, 4000);
+  }, []);
+
   function isValidEmail(email) {
     const pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return pattern.test(email);
@@ -56,41 +67,45 @@ export default function LoginForm() {
 
       navigate("/taytureTodoApp");
     } else {
-    
-        alert('Enter a valid email')
-      
+      alert("Enter a valid email");
     }
   }
 
   return (
+    <>
+      {isloading? 
+        <LoadingPage />
+      : (
     <div className="containerBody">
-      <form className="loginForm" onSubmit={handleSubmit}>
-        <hr className="logInHr" />
-        <Input
-          label="Username"
-          name="username"
-          type="text"
-          placeholder="Enter your username..."
-          required
-          onChange={handleChange}
-          value={inputValue.username}
-        />
-        <Input
-          label="Email"
-          name="email"
-          type="text"
-          placeholder="Enter your email..."
-          required
-          onChange={handleChange}
-          value={inputValue.email}
-        />
-        <button type="submit">Log in</button>
-        <p>
-          By continuing with Email, you agree to Todoist's
-          <span>Terms of Service</span> and <span>Privacy and Policy</span>
-        </p>
-      </form>
-      <img src={todoistImg} className="deskImg"></img>
+          <form className="loginForm" onSubmit={handleSubmit}>
+            <hr className="logInHr" />
+            <Input
+              label="Username"
+              name="username"
+              type="text"
+              placeholder="Enter your username..."
+              required
+              onChange={handleChange}
+              value={inputValue.username}
+            />
+            <Input
+              label="Email"
+              name="email"
+              type="text"
+              placeholder="Enter your email..."
+              required
+              onChange={handleChange}
+              value={inputValue.email}
+            />
+            <button type="submit">Log in</button>
+            <p>
+              By continuing with Email, you agree to Todoist's
+              <span>Terms of Service</span> and <span>Privacy and Policy</span>
+            </p>
+          </form>
+          <img src={todoistImg} className="deskImg"></img>
     </div>
+      )}
+  </>
   );
 }
