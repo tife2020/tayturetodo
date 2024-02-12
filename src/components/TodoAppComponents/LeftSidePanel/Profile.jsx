@@ -1,7 +1,6 @@
 import { BsLayoutSidebar } from "react-icons/bs";
 
-const username = localStorage.getItem("username");
-console.log(username);
+
 
 export default function Profile() {
   return (
