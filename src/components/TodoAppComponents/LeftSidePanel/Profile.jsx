@@ -6,7 +6,10 @@ console.log(username);
 export default function Profile() {
   return (
     <>
-      <div className="TopBar">
+      <div className="TopBar"
+      style={{
+            width: "50%",
+        }}>
         <div className="profileCont">
           <div className="profileImg">T</div>
           <p>tife2020</p>
@@ -17,6 +20,7 @@ export default function Profile() {
               color: "#666",
               height: "32px",
               width: "20px",
+              
             }}
           />
         </div>

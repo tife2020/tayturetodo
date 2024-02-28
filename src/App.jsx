@@ -6,6 +6,7 @@ import TodoApp from "./components/TodoAppComponents/TodoApp";
 const router = createBrowserRouter([
   {path:'/', element: <Home /> },
   {path:'/taytureTodoApp', element: <TodoApp /> },
+  
 ])
 
 export default function App() {

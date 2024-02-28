@@ -16,8 +16,10 @@ export default function TodoApp() {
   }, []);
 
   function handleleftMenuIsClicked() {
-    setLeftMenuIsClicked(true);
+    setLeftMenuIsClicked(prevState => !prevState);
+    
   }
+  
 
   return (
     <>
