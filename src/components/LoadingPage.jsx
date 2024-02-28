@@ -23,9 +23,7 @@ export default function LoadingPage() {
         className="mobileLogo"
         style={{ paddingBottom: "20px", width: "65px" }}
       ></img>
-      <ClipLoader color="#c3392c" size={25} style={{
-        paddingTop: 20
-      }} />
+      <ClipLoader color="#c3392c" size={25} paddingTop={20} />
     </div>
   );
 }
