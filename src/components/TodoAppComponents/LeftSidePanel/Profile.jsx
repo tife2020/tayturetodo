@@ -7,7 +7,7 @@ export default function Profile() {
     <>
       <div className="TopBar"
       style={{
-            width: "50%",
+            width: "100%",
         }}>
         <div className="profileCont">
           <div className="profileImg">T</div>

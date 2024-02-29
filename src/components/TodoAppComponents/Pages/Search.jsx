@@ -11,6 +11,7 @@ export default function Search(){
                     gap: "5px",
                     marginLeft: "18px",
                     marginTop: "10px",
+                    width: "100%"
                 }}
          >
          <CiSearch 

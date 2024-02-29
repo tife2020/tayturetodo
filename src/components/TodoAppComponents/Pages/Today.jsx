@@ -11,6 +11,7 @@ export default function Today(){
                     gap: "5px",
                     marginLeft: "18px",
                     marginTop: "2px",
+                    width: "100%"
                 }}
          >
          <MdDateRange 
