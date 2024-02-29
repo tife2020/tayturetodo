@@ -44,6 +44,7 @@ export default function Inbox({ handleClick, todos }) {
                     borderRadius: "5px",
                     marginLeft: "18px",
                     marginTop: "10px",
+                    width: "100%",
 
                 }}
                 onMouseEnter={handleMouseEnter}
